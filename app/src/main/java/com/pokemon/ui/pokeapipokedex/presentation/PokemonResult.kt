@@ -6,7 +6,7 @@ sealed class PokemonResult {
     sealed class GetListPokemonResult: PokemonResult(){
         object InProgress: GetListPokemonResult()
         object IsEmpty: GetListPokemonResult()
-        data class Success(val listPokemon: List<RemoteListPokemon?>?): GetListPokemonResult()
-        object Error: GetListPokemonResult()
+        data class Success(val listPokemon: RemoteListPokemon): GetListPokemonResult()
+        data class Error(val error: Throwable): GetListPokemonResult()
     }
 }

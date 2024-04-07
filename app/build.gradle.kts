@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.pokemon.ui.pokeapipokedex"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.pokemon.ui.pokeapipokedex"

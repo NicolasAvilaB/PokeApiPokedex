@@ -8,4 +8,8 @@ object Constants {
 
     const val NAME = "name"
     const val URL = "url"
+
+    const val SPRITES = "sprites"
+
+    const val FRONT_DEFAULT = "front_default"
 }

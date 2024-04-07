@@ -4,26 +4,32 @@ import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.pokemon.ui.pokeapipokedex.data.ListPokemonRepository
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonProcessor
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonReducer
 
 internal class ListPokemonFactory (
-    private val repository: ListPokemonRepository
+    private val reducer : PokemonReducer,
+    private val processor : PokemonProcessor
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(
-            ListPokemonRepository::class.java
-        ).newInstance(repository)
+            PokemonReducer::class.java,
+            PokemonProcessor::class.java
+        ).newInstance(reducer,processor)
     }
 }
 
 internal inline fun <reified T : ViewModel> getFactoryViewModel(
     activity: ComponentActivity,
-    repository: ListPokemonRepository
+    reducer: PokemonReducer,
+    processor: PokemonProcessor
 ): T {
     return ViewModelProvider(
         activity,
         ListPokemonFactory(
-            repository = repository
+            reducer = reducer,
+            processor = processor
         )
     )[T::class.java]
 }

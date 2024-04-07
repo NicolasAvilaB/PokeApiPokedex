@@ -1,9 +1,11 @@
 package com.pokemon.ui.pokeapipokedex.ui.listpokemon
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIState
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.ErrorComponent
+import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.ListPokemonComponent
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.LoadingComponent
 
 @Composable
@@ -21,10 +23,12 @@ fun ListPokemonContent(
 ) {
     when (val currentState = uiState.value){
         is PokemonUIState.DisplayListPokemonUiState -> {
-
+            ListPokemonComponent(currentState.listPokemon)
         }
-        PokemonUIState.ErrorUiState -> {
-            ErrorComponent(intentHandler = intentHandler)
+        is PokemonUIState.ErrorUiState -> {
+
+          //  ErrorComponent(intentHandler = intentHandler)
+            Text(""+currentState.error.toString())
         }
         PokemonUIState.LoadingUiState -> {
             LoadingComponent()

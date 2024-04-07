@@ -7,6 +7,8 @@ import com.pokemon.ui.pokeapipokedex.data.remote.retrofit.ListPokemonWebService
 import com.pokemon.ui.pokeapipokedex.data.remote.retrofit.Retrofit
 import com.pokemon.ui.pokeapipokedex.data.source.ListPokemonSourceRemote
 import com.pokemon.ui.pokeapipokedex.presentation.ListPokemonViewModel
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonProcessor
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonReducer
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
 
 internal class ListPokemonProvider() {
@@ -17,8 +19,15 @@ internal class ListPokemonProvider() {
         activity: FragmentActivity
     ): ListPokemonViewModel = getFactoryViewModel(
         activity = activity,
-        repository = getListPokemonRepository()
+        reducer = getReducer(),
+        processor = getProcessor()
     )
+
+    private fun getReducer():
+            PokemonReducer = PokemonReducer()
+
+    private fun getProcessor():
+            PokemonProcessor = PokemonProcessor(repository = getListPokemonRepository())
 
     private fun getListPokemonRepository():
             ListPokemonRepository = ListPokemonRepository(remote = getRemoteImpl())

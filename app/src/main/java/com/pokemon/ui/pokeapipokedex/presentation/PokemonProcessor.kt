@@ -21,7 +21,7 @@ class PokemonProcessor(
     private fun getListPokemonProcessor(): Flow<GetListPokemonResult> =
         repository.getListsPokemon()
             .map { listPokemon ->
-                if (listPokemon!!.isEmpty()) {
+                if (listPokemon.results?.isEmpty() == true) {
                     GetListPokemonResult.IsEmpty
                 }else {
                     GetListPokemonResult.Success(listPokemon)
@@ -30,8 +30,8 @@ class PokemonProcessor(
             .onStart {
                 emit(GetListPokemonResult.InProgress)
             }
-            .catch {
-                emit(GetListPokemonResult.Error)
+            .catch { e ->
+                emit(GetListPokemonResult.Error(e))
             }
             .flowOn(Dispatchers.IO)
 }
