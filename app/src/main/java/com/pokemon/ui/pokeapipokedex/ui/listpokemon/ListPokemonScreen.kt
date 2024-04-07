@@ -26,9 +26,7 @@ fun ListPokemonContent(
             ListPokemonComponent(currentState.listPokemon)
         }
         is PokemonUIState.ErrorUiState -> {
-
-          //  ErrorComponent(intentHandler = intentHandler)
-            Text(""+currentState.error.toString())
+            ErrorComponent(intentHandler = intentHandler)
         }
         PokemonUIState.LoadingUiState -> {
             LoadingComponent()
