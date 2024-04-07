@@ -5,7 +5,7 @@ import com.pokemon.ui.pokeapipokedex.data.models.RemoteListPokemon
 sealed class PokemonUIState {
     object LoadingUiState : PokemonUIState()
     data class DisplayListPokemonUiState(
-        val listPokemon: RemoteListPokemon,
+        val listPokemon: List<RemoteListPokemon?>?,
     ) : PokemonUIState()
     object ErrorUiState: PokemonUIState()
 }

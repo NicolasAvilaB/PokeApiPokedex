@@ -7,8 +7,8 @@ import com.pokemon.ui.pokeapipokedex.data.models.Constants.PREVIOUS
 import com.pokemon.ui.pokeapipokedex.data.models.Constants.RESULTS
 
 data class RemoteListPokemon(
-    @SerializedName(COUNT) val count: Int,
-    @SerializedName(NEXT) val next: String,
-    @SerializedName(PREVIOUS) val previous: String,
-    @SerializedName(RESULTS) val results: List<RemotePokemon>,
+    @SerializedName(COUNT) val count: Int?,
+    @SerializedName(NEXT) val next: String?,
+    @SerializedName(PREVIOUS) val previous: String?,
+    @SerializedName(RESULTS) val results: List<RemotePokemon?>?,
 )

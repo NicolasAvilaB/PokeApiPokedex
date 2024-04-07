@@ -18,7 +18,10 @@ class PokemonReducer {
     }
 
     private infix fun LoadingUiState.reduceWith(result: PokemonResult) = when (result) {
+        is GetListPokemonResult.Error -> ErrorUiState
+        is GetListPokemonResult.Success -> DisplayListPokemonUiState(result.listPokemon)
         is GetListPokemonResult.InProgress -> LoadingUiState
+        is GetListPokemonResult.IsEmpty -> ErrorUiState
         else -> throw unsupportedReduceCase()
     }
 
@@ -27,11 +30,8 @@ class PokemonReducer {
         else -> throw unsupportedReduceCase()
     }
 
-    private infix fun DisplayListPokemonUiState.reduceWith(result: PokemonResult) = when (result) {
-        is GetListPokemonResult.Error -> ErrorUiState
-        is GetListPokemonResult.Success -> DisplayListPokemonUiState(result.listPokemon)
-        is GetListPokemonResult.InProgress -> LoadingUiState
-        else -> throw unsupportedReduceCase()
+    private infix fun DisplayListPokemonUiState.reduceWith(result: PokemonResult): PokemonUIState {
+       throw unsupportedReduceCase()
     }
 
 }

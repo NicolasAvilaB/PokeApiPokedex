@@ -1,7 +1,6 @@
 package com.pokemon.ui.pokeapipokedex.presentation
 
 import com.pokemon.ui.pokeapipokedex.data.ListPokemonRepository
-import com.pokemon.ui.pokeapipokedex.data.source.ListPokemonSourceRemote
 import com.pokemon.ui.pokeapipokedex.presentation.PokemonAction.GetListPokemonAction
 import com.pokemon.ui.pokeapipokedex.presentation.PokemonResult.GetListPokemonResult
 import kotlinx.coroutines.Dispatchers
@@ -21,14 +20,18 @@ class PokemonProcessor(
 
     private fun getListPokemonProcessor(): Flow<GetListPokemonResult> =
         repository.getListsPokemon()
-            .map { remoteLogin ->
-                GetListPokemonResult.Success(remoteLogin)
+            .map { listPokemon ->
+                if (listPokemon!!.isEmpty()) {
+                    GetListPokemonResult.IsEmpty
+                }else {
+                    GetListPokemonResult.Success(listPokemon)
+                }
             }
             .onStart {
-                GetListPokemonResult.InProgress
+                emit(GetListPokemonResult.InProgress)
             }
             .catch {
-                GetListPokemonResult.Error
+                emit(GetListPokemonResult.Error)
             }
             .flowOn(Dispatchers.IO)
 }

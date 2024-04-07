@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.flow
 class ListPokemonRepository(
     private val remote: ListPokemonSourceRemote
 ) {
-    fun getListsPokemon(): Flow<RemoteListPokemon> = flow {
-        val listDog = remote.getListPokemonRemote()
-        emit(listDog)
+    fun getListsPokemon(): Flow<List<RemoteListPokemon?>?> = flow {
+        val listPokemon = remote.getListPokemonRemote()
+        emit(listPokemon as List<RemoteListPokemon?>?)
     }
 }
