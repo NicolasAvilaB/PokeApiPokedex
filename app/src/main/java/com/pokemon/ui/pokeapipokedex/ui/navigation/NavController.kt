@@ -1,6 +1,7 @@
 package com.testlistdog.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -13,7 +14,9 @@ fun NavController(fragmentActivity: FragmentActivity) {
 
     val listPokemonProvider = ListPokemonProvider()
     val listPokemonViewModel = listPokemonProvider.getViewModel(fragmentActivity)
-    val listPokemonIntentHandler = listPokemonProvider.getIntentHandler()
+    val listPokemonIntentHandler = listPokemonProvider.getIntentHandler().apply {
+        this.coroutineScope = rememberCoroutineScope()
+    }
 
     NavHost(
         navController = navController,

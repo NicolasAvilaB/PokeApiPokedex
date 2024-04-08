@@ -1,7 +1,7 @@
 package com.pokemon.ui.pokeapipokedex.data
 
 import com.pokemon.ui.pokeapipokedex.data.models.RemoteListPokemon
-import com.pokemon.ui.pokeapipokedex.data.models.RemoteListSpritesPokemon
+import com.pokemon.ui.pokeapipokedex.data.models.detailscreen.RemoteListDetailPokemon
 import com.pokemon.ui.pokeapipokedex.data.source.ListPokemonSourceRemote
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,7 +14,7 @@ class ListPokemonRepository(
         emit(listPokemon)
     }
 
-    fun getImagePokemon(namePokemon: String): Flow<RemoteListSpritesPokemon> =
+    fun getImagePokemon(namePokemon: String): Flow<RemoteListDetailPokemon> =
         flow {
             val imagePokemon = remote.getImagePokemonRemote(namePokemon)
             emit(imagePokemon)

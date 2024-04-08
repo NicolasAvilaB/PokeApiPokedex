@@ -19,7 +19,7 @@ class ListPokemonIntentHandler {
     internal fun pokemonUIntents(number: Int): Flow<PokemonUIntent> =
         merge(flow { emit(GetListPokemonUIntent(number)) }, pokemonIntents.asSharedFlow())
 
-    internal fun nextPagePokemon(number: Int) =
+    internal fun pagesPokemon(number: Int) =
         coroutineScope?.launch {
             pokemonIntents.emit(GetListPokemonUIntent(number))
         }

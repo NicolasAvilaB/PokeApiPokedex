@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">PokeApiPokedex</string>
+    <string name="retry">Reintentar</string>
+    <string name="page_back">Atrás</string>
+    <string name="page_next">Siguiente</string>
+    <string name="pokemons_total">Total de Pokemons:</string>
+    <string name="pokedex_from">Pokedex desde:</string>
+    <string name="pokedex_to">hasta</string>
+    <string name="error_message">
+        Ups!, algo salió mal, revise su conexión de internet e intentelo nuevamente
+    </string>
 </resources>

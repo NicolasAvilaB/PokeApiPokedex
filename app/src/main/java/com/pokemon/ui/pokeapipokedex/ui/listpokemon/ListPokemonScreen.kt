@@ -1,38 +1,50 @@
 package com.pokemon.ui.pokeapipokedex.ui.listpokemon
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
-import com.pokemon.ui.pokeapipokedex.presentation.ListPokemonViewModel
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIState
-import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.ErrorComponent
-import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.ListPokemonComponent
-import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.LoadingComponent
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIState.DisplayListPokemonUiState
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIState.ErrorUiState
+import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIState.LoadingUiState
+import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.ErrorState
+import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.ListPokemonState
+import com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate.LoadingState
 
 @Composable
 fun ListPokemonScreen(
     uiState: State<PokemonUIState>,
     intentHandler: ListPokemonIntentHandler,
 ) {
-    ListPokemonContent(uiState = uiState, intentHandler = intentHandler)
+    val number = rememberSaveable { mutableStateOf(0) }
+    ListPokemonContent(
+        uiState = uiState,
+        intentHandler = intentHandler,
+        number = number
+    )
 }
 
 @Composable
 fun ListPokemonContent(
     uiState: State<PokemonUIState>,
-    intentHandler: ListPokemonIntentHandler
+    intentHandler: ListPokemonIntentHandler,
+    number: MutableState<Int>
 ) {
     when (val currentState = uiState.value){
-        is PokemonUIState.DisplayListPokemonUiState -> {
-            ListPokemonComponent(
+        is DisplayListPokemonUiState -> {
+            ListPokemonState(
                 listPokemonItems = currentState.listPokemon,
-                intentHandler = intentHandler
+                intentHandler = intentHandler,
+                number = number
             )
         }
-        is PokemonUIState.ErrorUiState -> {
-           ErrorComponent(intentHandler = intentHandler)
+        is ErrorUiState -> {
+            ErrorState(intentHandler = intentHandler)
         }
-        PokemonUIState.LoadingUiState -> {
-            LoadingComponent()
+        LoadingUiState -> {
+            LoadingState()
         }
     }
 }
