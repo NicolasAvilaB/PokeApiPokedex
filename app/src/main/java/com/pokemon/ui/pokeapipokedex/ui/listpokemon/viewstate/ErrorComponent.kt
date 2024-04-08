@@ -7,7 +7,7 @@ import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
 
 @Composable
 fun ErrorComponent(intentHandler: ListPokemonIntentHandler){
-    Button(onClick = { intentHandler.pokemonUIntents()}) {
+    Button(onClick = { intentHandler.pokemonUIntents(number = 0)}) {
         Text("Reintentar")
     }
 }

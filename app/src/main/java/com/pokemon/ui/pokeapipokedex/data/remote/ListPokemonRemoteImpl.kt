@@ -9,9 +9,9 @@ internal class ListPokemonRemoteImpl(
     private val webService: ListPokemonWebService
 ) : ListPokemonSourceRemote {
     
-    override suspend fun getListPokemonRemote(): RemoteListPokemon =
-        webService.getListPokemon()
+    override suspend fun getListPokemonRemote(page: Int): RemoteListPokemon =
+        webService.getListPokemon(page)
 
-    override suspend fun getImagePokemonRemote(namePokemon: String) =
+    override suspend fun getImagePokemonRemote(namePokemon: String): RemoteListSpritesPokemon =
         webService.getImagePokemon(namePokemon)
 }

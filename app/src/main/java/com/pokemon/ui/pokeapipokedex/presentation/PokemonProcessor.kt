@@ -15,11 +15,14 @@ class PokemonProcessor(
 ) {
     fun actionProcessor(actions: PokemonAction): Flow<GetListPokemonResult> =
         when (actions) {
-            is GetListPokemonAction -> getListPokemonProcessor()
+            is GetListPokemonAction ->
+                getListPokemonProcessor(
+                    number = actions.number
+                )
         }
 
-    private fun getListPokemonProcessor(): Flow<GetListPokemonResult> =
-        repository.getListsPokemon()
+    private fun getListPokemonProcessor(number: Int): Flow<GetListPokemonResult> =
+        repository.getListsPokemon(page = number)
             .map { listPokemon ->
                 if (listPokemon.results?.isEmpty() == true) {
                     GetListPokemonResult.IsEmpty

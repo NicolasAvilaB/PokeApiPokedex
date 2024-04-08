@@ -45,7 +45,7 @@ class ListPokemonViewModel(
 
     private fun PokemonUIntent.toAction(): PokemonAction {
         return when (this) {
-            is GetListPokemonUIntent -> GetListPokemonAction
+            is GetListPokemonUIntent -> GetListPokemonAction(this.number)
         }
     }
 }

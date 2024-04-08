@@ -16,7 +16,7 @@ internal fun NavGraphBuilder.listPokemon(
     route = NavRoutes.ListPokemonScreen.routes
 ) {
     viewModel.processUserIntentsAndObserveUiStates(
-        intentHandler.pokemonUIntents()
+        intentHandler.pokemonUIntents(number = 0)
     )
     val uiState = remember {
         viewModel.pokemonState()

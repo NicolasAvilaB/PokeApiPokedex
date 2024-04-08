@@ -19,7 +19,8 @@ class PokemonReducer {
 
     private infix fun LoadingUiState.reduceWith(result: PokemonResult) = when (result) {
         is GetListPokemonResult.Error -> ErrorUiState(result.error)
-        is GetListPokemonResult.Success -> DisplayListPokemonUiState(result.listPokemon)
+        is GetListPokemonResult.Success ->
+            DisplayListPokemonUiState(result.listPokemon)
         is GetListPokemonResult.InProgress -> LoadingUiState
         else -> throw unsupportedReduceCase()
     }
