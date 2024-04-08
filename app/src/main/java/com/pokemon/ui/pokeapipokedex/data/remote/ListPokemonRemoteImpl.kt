@@ -12,6 +12,6 @@ internal class ListPokemonRemoteImpl(
     override suspend fun getListPokemonRemote(page: Int): RemoteListPokemon =
         webService.getListPokemon(page)
 
-    override suspend fun getImagePokemonRemote(namePokemon: String): RemoteListDetailPokemon =
+    override suspend fun getDetailPokemonRemote(namePokemon: String): RemoteListDetailPokemon =
         webService.getDetailPokemon(namePokemon)
 }

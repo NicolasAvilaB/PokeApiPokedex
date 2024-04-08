@@ -5,5 +5,5 @@ import com.pokemon.ui.pokeapipokedex.data.models.detailscreen.RemoteListDetailPo
 
 interface ListPokemonSourceRemote {
     suspend fun getListPokemonRemote(page: Int): RemoteListPokemon
-    suspend fun getImagePokemonRemote(namePokemon: String): RemoteListDetailPokemon
+    suspend fun getDetailPokemonRemote(namePokemon: String): RemoteListDetailPokemon
 }

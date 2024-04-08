@@ -14,9 +14,9 @@ class ListPokemonRepository(
         emit(listPokemon)
     }
 
-    fun getImagePokemon(namePokemon: String): Flow<RemoteListDetailPokemon> =
+    fun getDetailPokemon(namePokemon: String): Flow<RemoteListDetailPokemon> =
         flow {
-            val imagePokemon = remote.getImagePokemonRemote(namePokemon)
-            emit(imagePokemon)
+            val detailPokemon = remote.getDetailPokemonRemote(namePokemon)
+            emit(detailPokemon)
         }
 }
