@@ -6,6 +6,9 @@
     <string name="pokemons_total">Total de Pokemons:</string>
     <string name="pokedex_from">Pokedex desde:</string>
     <string name="pokedex_to">hasta</string>
+    <string name="pokedex_title">Pokédex</string>
+    <string name="button_back_description">Botón Volver</string>
+    <string name="detail_pokemon_title">Detalle de Pokemon</string>
     <string name="error_message">
         Ups!, algo salió mal, revise su conexión de internet e intentelo nuevamente
     </string>

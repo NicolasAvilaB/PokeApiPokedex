@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pokemon.ui.pokeapipokedex.R
-import com.pokemon.ui.pokeapipokedex.data.models.RemoteListPokemon
+import com.pokemon.ui.pokeapipokedex.data.models.listpokemon.RemoteListPokemon
 
 @Composable
 fun TextHeadDescription(listPokemonItems: RemoteListPokemon, number: MutableState<Int>) {

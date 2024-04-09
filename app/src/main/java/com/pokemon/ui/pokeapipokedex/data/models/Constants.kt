@@ -1,6 +1,6 @@
 package com.pokemon.ui.pokeapipokedex.data.models
 
-object Constants {
+internal object Constants {
     const val COUNT = "count"
     const val NEXT = "next"
     const val PREVIOUS = "previous"
@@ -10,7 +10,7 @@ object Constants {
     const val OFFSET = "offset"
     const val LIMIT = "limit"
 
-    const val NAME_POKEMON = ""
+    const val NAME_POKEMON = "namePokemon"
     const val ABILITIES = "abilities"
     const val ABILITY = "ability"
     const val IS_HIDDEN = "is_hidden"

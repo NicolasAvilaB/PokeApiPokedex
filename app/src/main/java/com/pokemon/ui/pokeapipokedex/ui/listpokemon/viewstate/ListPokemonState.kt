@@ -1,6 +1,7 @@
 package com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,19 +11,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.pokemon.ui.pokeapipokedex.data.models.RemoteListPokemon
+import com.pokemon.ui.pokeapipokedex.data.models.listpokemon.RemoteListPokemon
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.components.ListSelectItem
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.components.PagesButton
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.components.TextHeadDescription
+import com.pokemon.ui.pokeapipokedex.ui.navigation.NavGo
 
 @Composable
 fun ListPokemonState(
     listPokemonItems: RemoteListPokemon,
     intentHandler: ListPokemonIntentHandler,
-    number: MutableState<Int>
+    number: MutableState<Int>,
+    navGo: NavGo,
+    paddingValues: PaddingValues
 ) {
-    Column {
+    Column(modifier = Modifier.padding(paddingValues)) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -41,6 +45,9 @@ fun ListPokemonState(
                             ListSelectItem(
                                 name = remotePokemon.name.toString(),
                                 onClick = {
+                                    navGo.logDetailPokemon.invoke(
+                                        remotePokemon.name.toString()
+                                    )
                                 }
                             )
                         }

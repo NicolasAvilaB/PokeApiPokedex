@@ -1,14 +1,14 @@
 package com.testlistdog.ui.listdogs.di
 
 import androidx.fragment.app.FragmentActivity
-import com.pokemon.ui.pokeapipokedex.data.ListPokemonRepository
-import com.pokemon.ui.pokeapipokedex.data.remote.ListPokemonRemoteImpl
-import com.pokemon.ui.pokeapipokedex.data.remote.retrofit.ListPokemonWebService
+import com.pokemon.ui.pokeapipokedex.data.PokemonRepository
+import com.pokemon.ui.pokeapipokedex.data.remote.PokemonRemoteImpl
+import com.pokemon.ui.pokeapipokedex.data.remote.retrofit.PokemonWebService
 import com.pokemon.ui.pokeapipokedex.data.remote.retrofit.Retrofit
-import com.pokemon.ui.pokeapipokedex.data.source.ListPokemonSourceRemote
-import com.pokemon.ui.pokeapipokedex.presentation.ListPokemonViewModel
-import com.pokemon.ui.pokeapipokedex.presentation.PokemonProcessor
-import com.pokemon.ui.pokeapipokedex.presentation.PokemonReducer
+import com.pokemon.ui.pokeapipokedex.data.source.PokemonSourceRemote
+import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.ListPokemonViewModel
+import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.ListPokemonProcessor
+import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.ListPokemonReducer
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
 
 internal class ListPokemonProvider() {
@@ -24,20 +24,20 @@ internal class ListPokemonProvider() {
     )
 
     private fun getReducer():
-            PokemonReducer = PokemonReducer()
+            ListPokemonReducer = ListPokemonReducer()
 
     private fun getProcessor():
-            PokemonProcessor = PokemonProcessor(repository = getListPokemonRepository())
+            ListPokemonProcessor = ListPokemonProcessor(repository = getListPokemonRepository())
 
     private fun getListPokemonRepository():
-            ListPokemonRepository = ListPokemonRepository(remote = getRemoteImpl())
+            PokemonRepository = PokemonRepository(remote = getRemoteImpl())
 
     private fun getRemoteImpl():
-            ListPokemonSourceRemote = ListPokemonRemoteImpl(webService = listPokemonWebService)
+            PokemonSourceRemote = PokemonRemoteImpl(webService = pokemonWebService)
 
-    private val listPokemonWebService: ListPokemonWebService
+    private val pokemonWebService: PokemonWebService
     init {
         val retrofit = Retrofit.provideRetrofit()
-        listPokemonWebService = retrofit.create(ListPokemonWebService::class.java)
+        pokemonWebService = retrofit.create(PokemonWebService::class.java)
     }
 }

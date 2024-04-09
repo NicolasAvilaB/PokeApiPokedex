@@ -1,4 +1,4 @@
-package com.pokemon.ui.pokeapipokedex.ui.listpokemon.viewstate
+package com.pokemon.ui.pokeapipokedex.ui.detailpokemon.viewstate
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,10 +12,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.pokemon.ui.pokeapipokedex.R
-import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
+import com.pokemon.ui.pokeapipokedex.ui.navigation.NavGo
 
 @Composable
-fun ErrorState(intentHandler: ListPokemonIntentHandler) {
+fun ErrorState(navGo: NavGo) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -30,7 +30,7 @@ fun ErrorState(intentHandler: ListPokemonIntentHandler) {
             )
             Button(
                 onClick = {
-                    intentHandler.pagesPokemon(number = 0)
+                    navGo.popBackStack.invoke()
                 }
             ) {
                 Text(stringResource(id = R.string.retry))

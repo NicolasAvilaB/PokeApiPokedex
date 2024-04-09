@@ -1,7 +1,7 @@
 package com.pokemon.ui.pokeapipokedex.ui.listpokemon
 
-import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIntent
-import com.pokemon.ui.pokeapipokedex.presentation.PokemonUIntent.GetListPokemonUIntent
+import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonUIntent
+import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonUIntent.GetListPokemonUIntent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -14,10 +14,12 @@ class ListPokemonIntentHandler {
 
     var coroutineScope: CoroutineScope? = null
 
-    private val pokemonIntents = MutableSharedFlow<PokemonUIntent>()
+    private val pokemonIntents = MutableSharedFlow<ListPokemonUIntent>()
 
-    internal fun pokemonUIntents(number: Int): Flow<PokemonUIntent> =
-        merge(flow { emit(GetListPokemonUIntent(number)) }, pokemonIntents.asSharedFlow())
+    internal fun pokemonUIntents(number: Int): Flow<ListPokemonUIntent> = merge(
+        flow { emit(GetListPokemonUIntent(number = number)) },
+        pokemonIntents.asSharedFlow()
+    )
 
     internal fun pagesPokemon(number: Int) =
         coroutineScope?.launch {
