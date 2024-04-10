@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -18,17 +19,20 @@ fun ListPokemon(
     number: MutableState<Int>,
     navGo: NavGo
 ) {
+    val lazyListState = rememberLazyListState()
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(6.dp)
-            .fillMaxHeight(0.9f)
+            .fillMaxHeight(0.92f)
     ) {
         TextHeadDescription(
             listPokemonItems = listPokemonItems,
             number = number
         )
-        LazyColumn {
+        LazyColumn(
+            state = lazyListState
+        ) {
             listPokemonItems.results?.let { pokemonList ->
                 items(pokemonList.size) { index ->
                     val pokemon = pokemonList[index]

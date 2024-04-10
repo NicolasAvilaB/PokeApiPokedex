@@ -9,12 +9,16 @@ import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPok
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIntent
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIntent.GetDetailPokemonUIntent
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapMerge
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.scan
@@ -25,17 +29,18 @@ class DetailPokemonViewModel(
 ) : ViewModel() {
 
     val loadingUiState: DetailPokemonUIState = LoadingUiState
-    private val detailtokemonUiState: MutableStateFlow<DetailPokemonUIState> =
-        MutableStateFlow(loadingUiState)
+    private val detailtokemonUiState: MutableSharedFlow<DetailPokemonUIState> =
+        MutableSharedFlow(replay = 1)
 
-    fun detailViewPokemonState(): StateFlow<DetailPokemonUIState> =
-        detailtokemonUiState.asStateFlow()
+    fun detailViewPokemonState(): Flow<DetailPokemonUIState> =
+        detailtokemonUiState
 
     fun processUserIntentDetailPokemon(
         detailtPokemonIntents: Flow<DetailPokemonUIntent>,
         coroutineScope: CoroutineScope = viewModelScope,
     ) {
-        detailtPokemonIntents.buffer()
+        detailtPokemonIntents
+            .distinctUntilChanged()
             .flatMapMerge { detailPokemonIntent ->
                 processor.actionProcessor(detailPokemonIntent.toAction())
             }
@@ -43,8 +48,9 @@ class DetailPokemonViewModel(
                 with(reducer) { previousUiState reduceWith result }
             }
             .onEach { detailtPokemonstate ->
-                detailtokemonUiState.value = detailtPokemonstate
+                detailtokemonUiState.emit(detailtPokemonstate)
             }
+            .flowOn(Dispatchers.IO)
             .launchIn(coroutineScope)
     }
 

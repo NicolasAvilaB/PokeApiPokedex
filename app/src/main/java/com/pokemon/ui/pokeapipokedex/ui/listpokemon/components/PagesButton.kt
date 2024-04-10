@@ -2,6 +2,7 @@ package com.pokemon.ui.pokeapipokedex.ui.listpokemon.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -24,11 +25,15 @@ fun PagesButton(
         horizontalArrangement = Arrangement.Center
     ) {
         Button(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxHeight(),
             enabled = number.value != 0,
             onClick = {
-                number.value -= 20
-                intentHandler.pagesPokemon(number = number.value)
+                kotlin.runCatching {
+                    number.value -= 20
+                    intentHandler.pagesPokemon(number = number.value)
+                }.onFailure { e ->
+                    e.printStackTrace()
+                }
             },
         ) {
             Text(
@@ -36,11 +41,15 @@ fun PagesButton(
             )
         }
         Button(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxHeight(),
             enabled = number.value + 20 <= listPokemonItems.count!!,
             onClick = {
-                number.value += 20
-                intentHandler.pagesPokemon(number = number.value)
+                kotlin.runCatching {
+                    number.value += 20
+                    intentHandler.pagesPokemon(number = number.value)
+                }.onFailure { e ->
+                    e.printStackTrace()
+                }
             },
         ) {
             Text(
