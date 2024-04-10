@@ -1,6 +1,5 @@
 package com.testlistdog.ui.navigation
 
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
@@ -47,9 +46,11 @@ internal fun NavGraphBuilder.detailPokemon(
     navController.previousBackStackEntry?.savedStateHandle?.get<String>(
         NAME_POKEMON
     )?.let { namePokemon ->
-        viewModel.processUserIntentDetailPokemon(
-            intentHandler.detailPokemonUIntents(namePokemon = namePokemon)
-        )
+        LaunchedEffect(key1 = viewModel) {
+            viewModel.processUserIntentDetailPokemon(
+                intentHandler.detailPokemonUIntents(namePokemon = namePokemon)
+            )
+        }
         val uiState = remember {
             viewModel.detailViewPokemonState()
         }.collectAsState(initial = viewModel.loadingUiState)

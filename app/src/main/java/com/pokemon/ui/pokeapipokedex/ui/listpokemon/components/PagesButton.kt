@@ -6,17 +6,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.pokemon.ui.pokeapipokedex.R
+import com.pokemon.ui.pokeapipokedex.data.models.listpokemon.RemoteListPokemon
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
 
 @Composable
 fun PagesButton(
+    listPokemonItems: RemoteListPokemon,
     intentHandler: ListPokemonIntentHandler,
-    number: MutableState<Int>
+    number: MutableState<Int>,
 ) {
     Row(
         modifier = Modifier.fillMaxSize(),
@@ -24,6 +25,7 @@ fun PagesButton(
     ) {
         Button(
             modifier = Modifier.weight(1f),
+            enabled = number.value != 0,
             onClick = {
                 number.value -= 20
                 intentHandler.pagesPokemon(number = number.value)
@@ -35,6 +37,7 @@ fun PagesButton(
         }
         Button(
             modifier = Modifier.weight(1f),
+            enabled = number.value + 20 <= listPokemonItems.count!!,
             onClick = {
                 number.value += 20
                 intentHandler.pagesPokemon(number = number.value)

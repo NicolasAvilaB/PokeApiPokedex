@@ -30,6 +30,7 @@ fun ListPokemonState(
             navGo = navGo
         )
         PagesButton(
+            listPokemonItems = listPokemonItems,
             intentHandler = intentHandler,
             number = number
         )
