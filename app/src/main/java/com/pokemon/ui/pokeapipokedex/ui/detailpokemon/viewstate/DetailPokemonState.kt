@@ -19,6 +19,14 @@ import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.HeaderAbility
 import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.HeaderImage
 import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.StatsBase
 import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.TypeTable
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration1
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration2
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration3
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration4
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration5
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration6
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration7
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.spritelistgeneration.ListGeneration8
 
 @Composable
 fun DetailPokemonState(
@@ -72,6 +80,38 @@ fun DetailPokemonState(
                 paddingText = paddingText
             )
         }
+        ListGeneration1(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration2(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration3(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration4(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration5(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration6(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration7(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        ListGeneration8(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
     }
 }
 

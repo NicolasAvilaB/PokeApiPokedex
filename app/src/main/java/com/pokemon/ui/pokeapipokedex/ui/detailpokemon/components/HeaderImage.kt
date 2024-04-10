@@ -1,20 +1,14 @@
 package com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.pokemon.ui.pokeapipokedex.data.models.detailpokemon.RemoteListDetailPokemon
 import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.text.PokemonText24
@@ -32,17 +26,12 @@ fun HeaderImage(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
+            ImagePokemon(
                 painter = rememberAsyncImagePainter(
                     detailPokemon.sprites.let { remoteSprites ->
                         remoteSprites?.frontdefault.toString()
                     }
                 ),
-                contentDescription = null,
-                modifier = Modifier
-                    .width(150.dp)
-                    .clip(shape = RoundedCornerShape(11.dp)),
-                contentScale = ContentScale.Crop
             )
             PokemonText24(
                 text = "${detailPokemon.name?.capitalize()}",
