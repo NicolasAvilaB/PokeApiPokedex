@@ -1,5 +1,7 @@
 package com.testlistdog.ui.navigation
 
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.navigation.NavGraphBuilder
@@ -20,9 +22,9 @@ internal fun NavGraphBuilder.listPokemon(
 ) = composable(
     route = NavRoutes.ListPokemonScreen.routes
 ) {
-    viewModel.processUserIntentsAndObserveUiStates(
-        intentHandler.pokemonUIntents()
-    )
+    LaunchedEffect(key1 = viewModel) {
+        viewModel.processUserIntentsAndObserveUiStates(intentHandler.pokemonUIntents())
+    }
     val uiState = remember {
         viewModel.pokemonState()
     }.collectAsState(initial = viewModel.loadingUiState)
