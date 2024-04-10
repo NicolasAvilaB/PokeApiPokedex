@@ -16,8 +16,8 @@ class ListPokemonIntentHandler {
 
     private val pokemonIntents = MutableSharedFlow<ListPokemonUIntent>()
 
-    internal fun pokemonUIntents(number: Int): Flow<ListPokemonUIntent> = merge(
-        flow { emit(GetListPokemonUIntent(number = number)) },
+    internal fun pokemonUIntents(): Flow<ListPokemonUIntent> = merge(
+        flow { emit(GetListPokemonUIntent(number = 0)) },
         pokemonIntents.asSharedFlow()
     )
 
