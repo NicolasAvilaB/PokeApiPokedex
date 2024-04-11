@@ -28,7 +28,9 @@ import com.pokemon.ui.pokeapipokedex.ui.navigation.NavGo
 @Composable
 fun DetailPokemonScreen(
     uiState: State<DetailPokemonUIState>,
-    navGo: NavGo
+    navGo: NavGo,
+    intentHandler: DetailPokemonIntentHandler,
+    namePokemon: String
 ) {
     Scaffold(
         topBar = {
@@ -55,8 +57,9 @@ fun DetailPokemonScreen(
         }
     ) { paddingValues ->
         DetailPokemonContent(
+            intentHandler = intentHandler,
+            namePokemon = namePokemon,
             uiState = uiState,
-            navGo = navGo,
             paddingValues = paddingValues
         )
     }
@@ -66,8 +69,9 @@ fun DetailPokemonScreen(
 @Composable
 fun DetailPokemonContent(
     uiState: State<DetailPokemonUIState>,
-    navGo: NavGo,
     paddingValues: PaddingValues,
+    intentHandler: DetailPokemonIntentHandler,
+    namePokemon: String,
 ) {
     when (val currentState = uiState.value) {
         is DisplayDetailPokemonUiState -> {
@@ -77,7 +81,10 @@ fun DetailPokemonContent(
             )
         }
 
-        is ErrorUiState -> ErrorState(navGo = navGo)
+        is ErrorUiState -> ErrorState(
+            intentHandler = intentHandler,
+            namePokemon = namePokemon
+        )
         LoadingUiState -> LoadingState()
     }
 }

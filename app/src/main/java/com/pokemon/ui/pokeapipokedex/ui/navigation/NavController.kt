@@ -19,7 +19,9 @@ fun NavController(fragmentActivity: FragmentActivity) {
 
     val detailPokemonProvider = DetailPokemonProvider()
     val detailPokemonViewModel = detailPokemonProvider.getViewModel(fragmentActivity)
-    val detailPokemonIntentHandler = detailPokemonProvider.getIntentHandler()
+    val detailPokemonIntentHandler = detailPokemonProvider.getIntentHandler().apply {
+        this.coroutineScope = rememberCoroutineScope()
+    }
 
     val listPokemonProvider = ListPokemonProvider()
     val listPokemonViewModel = listPokemonProvider.getViewModel(fragmentActivity)

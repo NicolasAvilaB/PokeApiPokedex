@@ -8,14 +8,11 @@ import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPok
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIState.LoadingUiState
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIntent
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIntent.GetDetailPokemonUIntent
+import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIntent.RetryUIntent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flowOn
@@ -40,7 +37,6 @@ class DetailPokemonViewModel(
         coroutineScope: CoroutineScope = viewModelScope,
     ) {
         detailtPokemonIntents
-            .distinctUntilChanged()
             .flatMapMerge { detailPokemonIntent ->
                 processor.actionProcessor(detailPokemonIntent.toAction())
             }
@@ -51,12 +47,16 @@ class DetailPokemonViewModel(
                 detailtokemonUiState.emit(detailtPokemonstate)
             }
             .flowOn(Dispatchers.IO)
+            .distinctUntilChanged()
             .launchIn(coroutineScope)
     }
 
     private fun DetailPokemonUIntent.toAction(): DetailPokemonAction {
         return when (this) {
             is GetDetailPokemonUIntent -> GetDetailPokemonAction(
+                this.namePokemon
+            )
+            is RetryUIntent -> GetDetailPokemonAction(
                 this.namePokemon
             )
         }

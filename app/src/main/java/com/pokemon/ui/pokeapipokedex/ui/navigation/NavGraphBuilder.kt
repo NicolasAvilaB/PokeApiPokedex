@@ -56,6 +56,8 @@ internal fun NavGraphBuilder.detailPokemon(
         }.collectAsState(initial = viewModel.loadingUiState)
 
         DetailPokemonScreen(
+            intentHandler = intentHandler,
+            namePokemon = namePokemon,
             uiState = uiState,
             navGo = navGo
         )

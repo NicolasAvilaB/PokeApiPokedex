@@ -1,12 +1,9 @@
 package com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components
 
-import android.media.MediaPlayer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
@@ -48,49 +45,13 @@ fun HeaderAbility(
                 }
             }
         }
-        Button(
-            onClick = {
-                runCatching {
-                    MediaPlayer().apply {
-                        reset()
-                        setDataSource(detailPokemon.cries?.latest.toString())
-                        prepare()
-                        start()
-                    }
-                }.onFailure { e ->
-                    e.printStackTrace()
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = paddingText,
-                    end = paddingText
-                )
-        ) {
-            PokemonText16(text = "Grito Nuevo")
-        }
-        Button(
-            onClick = {
-                runCatching {
-                    MediaPlayer().apply {
-                        reset()
-                        setDataSource(detailPokemon.cries?.legacy.toString())
-                        prepare()
-                        start()
-                    }
-                }.onFailure { e ->
-                    e.printStackTrace()
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = paddingText,
-                    end = paddingText
-                )
-        ) {
-            PokemonText16(text = "Grito Antiguo")
-        }
+        CrieSoundLatest(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
+        CrieSoundLegacy(
+            detailPokemon = detailPokemon,
+            paddingText = paddingText
+        )
     }
 }

@@ -9,6 +9,8 @@
     <string name="pokedex_title">Pokédex</string>
     <string name="button_back_description">Botón Volver</string>
     <string name="detail_pokemon_title">Detalle de Pokemon</string>
+    <string name="crie_legacy">Grito Antiguo</string>
+    <string name="crie_latest">Grito Nuevo</string>
     <string name="error_message">
         Ups!, algo salió mal, revise su conexión de internet e intentelo nuevamente
     </string>

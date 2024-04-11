@@ -72,7 +72,7 @@ fun ListPokemonContent(
             )
         }
         is ErrorUiState -> {
-            ErrorState(intentHandler = intentHandler)
+            ErrorState(intentHandler = intentHandler, number = number)
         }
         LoadingUiState -> {
             LoadingState()
