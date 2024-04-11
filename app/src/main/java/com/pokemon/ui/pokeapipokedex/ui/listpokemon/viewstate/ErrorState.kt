@@ -13,10 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.pokemon.ui.pokeapipokedex.R
+import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.ImagePokemon
 import com.pokemon.ui.pokeapipokedex.ui.detailpokemon.components.text.PokemonText24
 import com.pokemon.ui.pokeapipokedex.ui.listpokemon.ListPokemonIntentHandler
 import com.pokemon.ui.pokeapipokedex.ui.theme.RedStrong
@@ -33,6 +35,9 @@ fun ErrorState(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            ImagePokemon(
+                painter = painterResource(id = R.drawable.ui_pikachu_image)
+            )
             PokemonText24(
                 text = stringResource(id = R.string.error_message),
                 textAlign = TextAlign.Center,
