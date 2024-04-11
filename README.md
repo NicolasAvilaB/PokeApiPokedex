@@ -1,10 +1,10 @@
-## PokeApi Pokedex
+# PokeApi Pokedex
 
 Atrapalos a todos, pokedex desarrollada usando como base los endpoints Api del sitio https://pokeapi.co/, carga una lista de Pokemons de un total de 1302 (incluye megaevoluciones, gigamax etc), si pinchas cada pokémon podrás ver el detalle de cada uno, ofreciendo descripción de habilidades, tipos, stats, sprites, grito del mismo, etc.
 
 El resultado se ve reflejado en un LazyColumn con 20 primeros Pokémons, incluye paginación (usando key offert ofrecida por el sitio) con 2 botones de navegación "Atras" y "Siguiente" con carga de lista de 20 Pokémons.
 
-# Para construir este proyecto se basaron en arquitectura y patrones:
+## Para construir este proyecto se basaron en arquitectura y patrones:
 
 - MVI.
 - Patrón Singleton
