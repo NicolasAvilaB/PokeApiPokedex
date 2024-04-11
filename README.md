@@ -28,11 +28,11 @@ The result is reflected in a LazyColumn with 20 first Pokémons, includes pagina
 ## To build this project were based on architecture and patterns:
 
 - MVI.
-- Patrón Singleton
+- Singleton Pattern
 - SOLID
 - Kotlin.
 - Jetpack Compose.
-- Corrutinas o flows.
-- Inyección de dependencias con Dagger2 (Automáticas).
+- Corrutines or flows.
+- Dependencies Inyection with Dagger2 (Auto).
 - Retrofit.
 - Clean Architecture.
