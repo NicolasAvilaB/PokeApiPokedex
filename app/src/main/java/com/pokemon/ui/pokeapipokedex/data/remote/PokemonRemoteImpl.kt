@@ -4,8 +4,9 @@ import com.pokemon.ui.pokeapipokedex.data.models.listpokemon.RemoteListPokemon
 import com.pokemon.ui.pokeapipokedex.data.models.detailpokemon.RemoteListDetailPokemon
 import com.pokemon.ui.pokeapipokedex.data.remote.retrofit.PokemonWebService
 import com.pokemon.ui.pokeapipokedex.data.source.PokemonSourceRemote
+import javax.inject.Inject
 
-internal class PokemonRemoteImpl(
+internal class PokemonRemoteImpl @Inject constructor(
     private val webService: PokemonWebService
 ) : PokemonSourceRemote {
     

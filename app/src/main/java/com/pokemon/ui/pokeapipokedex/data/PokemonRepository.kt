@@ -5,8 +5,9 @@ import com.pokemon.ui.pokeapipokedex.data.models.detailpokemon.RemoteListDetailP
 import com.pokemon.ui.pokeapipokedex.data.source.PokemonSourceRemote
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class PokemonRepository(
+class PokemonRepository @Inject constructor(
     private val remote: PokemonSourceRemote
 ) {
     fun getListsPokemon(page: Int): Flow<RemoteListPokemon> = flow {

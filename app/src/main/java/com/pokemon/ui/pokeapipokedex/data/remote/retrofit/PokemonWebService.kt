@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-internal interface PokemonWebService {
+interface PokemonWebService {
     @GET("api/v2/pokemon")
     suspend fun getListPokemon(
         @Query(OFFSET) page: Int,

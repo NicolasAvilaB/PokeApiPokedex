@@ -7,8 +7,9 @@ import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemon
 import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonUIState.DisplayListPokemonUiState
 import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonUIState.ErrorUiState
 import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonUIState.LoadingUiState
+import javax.inject.Inject
 
-class ListPokemonReducer {
+class ListPokemonReducer @Inject constructor(){
 
     private fun unsupportedReduceCase() = RuntimeException()
 

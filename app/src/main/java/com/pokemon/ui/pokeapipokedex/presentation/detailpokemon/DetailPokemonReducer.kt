@@ -7,8 +7,9 @@ import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPok
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIState.DisplayDetailPokemonUiState
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIState.ErrorUiState
 import com.pokemon.ui.pokeapipokedex.presentation.detailpokemon.events.DetailPokemonUIState.LoadingUiState
+import javax.inject.Inject
 
-class DetailPokemonReducer {
+class DetailPokemonReducer @Inject constructor(){
     private fun unsupportedReduceCase() = RuntimeException()
 
     infix fun DetailPokemonUIState.reduceWith(result: DetailPokemonResult): DetailPokemonUIState {

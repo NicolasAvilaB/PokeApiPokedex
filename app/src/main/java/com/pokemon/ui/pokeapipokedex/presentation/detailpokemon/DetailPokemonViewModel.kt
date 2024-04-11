@@ -19,8 +19,9 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.scan
+import javax.inject.Inject
 
-class DetailPokemonViewModel(
+class DetailPokemonViewModel @Inject constructor(
     private val reducer : DetailPokemonReducer,
     private val processor : DetailPokemonProcessor
 ) : ViewModel() {

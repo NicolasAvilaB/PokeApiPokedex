@@ -1,5 +1,6 @@
 package com.pokemon.ui.pokeapipokedex.presentation.listpokemon
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonAction
@@ -11,6 +12,8 @@ import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemon
 import com.pokemon.ui.pokeapipokedex.presentation.listpokemon.events.ListPokemonUIntent.RetryIntent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -19,8 +22,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.scan
+import javax.inject.Inject
 
-class ListPokemonViewModel(
+@ExperimentalCoroutinesApi
+@FlowPreview
+@ExperimentalAnimationApi
+class ListPokemonViewModel @Inject constructor(
     private val reducer : ListPokemonReducer,
     private val processor : ListPokemonProcessor
 ) : ViewModel() {
