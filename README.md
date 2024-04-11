@@ -16,7 +16,7 @@ El resultado se ve reflejado en un LazyColumn con 20 primeros Pokémons, incluye
 - Retrofit.
 - Clean Architecture.
 
-![Screenrecorder-2024-04-09-13-44-58-841](https://github.com/NicolasAvilaB/PokeApiPokedex/assets/36216299/29463f29-092f-4b7d-86db-a8fb50a7e3c2)
+![Screenrecorder-2024-04-11-02-54-35-648](https://github.com/NicolasAvilaB/PokeApiPokedex/assets/36216299/2fe88f7b-e700-4722-b3f3-ebcb799cddb4)
 
 
 # PokeApi Pokédex (English)
