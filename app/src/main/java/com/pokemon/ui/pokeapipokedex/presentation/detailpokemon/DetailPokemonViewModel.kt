@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flowOn
@@ -49,6 +50,9 @@ class DetailPokemonViewModel @Inject constructor(
             }
             .flowOn(Dispatchers.IO)
             .distinctUntilChanged()
+            .catch { e ->
+                e.printStackTrace()
+            }
             .launchIn(coroutineScope)
     }
 
