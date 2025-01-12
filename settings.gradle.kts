@@ -3,6 +3,13 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url = uri("https://maven.pkg.github.com/NicolasAvilaB/ui-composables")
+            credentials {
+                username = "NicolasAvilaB"
+                password = "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"
+            }
+        }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +17,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+            maven {
+                url = uri("https://maven.pkg.github.com/NicolasAvilaB/ui-composables")
+                credentials {
+                    username = "NicolasAvilaB"
+                    password = "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"
+                }
+        }
     }
 }
 

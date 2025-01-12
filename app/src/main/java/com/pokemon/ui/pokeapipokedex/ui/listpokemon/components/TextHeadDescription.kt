@@ -9,20 +9,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.items.ui.text.ComposesText18
+import com.items.ui.text.ComposesText20
 import com.pokemon.ui.pokeapipokedex.R
 import com.pokemon.ui.pokeapipokedex.data.models.listpokemon.RemoteListPokemon
 
 @Composable
 fun TextHeadDescription(listPokemonItems: RemoteListPokemon, number: MutableState<Int>) {
-    Text(
+    ComposesText20(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 16.dp, start = 16.dp),
-        text =
-        stringResource(id = R.string.pokemons_total) + " ${listPokemonItems.count}",
-        fontSize = 20.sp,
+        text = stringResource(id = R.string.pokemons_total) + " ${listPokemonItems.count}",
     )
-    Text(
+    ComposesText18(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp),
