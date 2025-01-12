@@ -7,7 +7,7 @@ pluginManagement {
             url = uri("https://maven.pkg.github.com/NicolasAvilaB/ui-composables")
             credentials {
                 username = "NicolasAvilaB"
-                password = "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"
+                password = "https://drive.google.com/file/d/1-B7vs7OC_m5daeK7RpQ2tHNazyj5IVF4/view?usp=sharing"
             }
         }
     }
@@ -21,7 +21,7 @@ dependencyResolutionManagement {
                 url = uri("https://maven.pkg.github.com/NicolasAvilaB/ui-composables")
                 credentials {
                     username = "NicolasAvilaB"
-                    password = "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"
+                    password = "https://drive.google.com/file/d/1-B7vs7OC_m5daeK7RpQ2tHNazyj5IVF4/view?usp=sharing"
                 }
         }
     }

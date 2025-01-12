@@ -8,7 +8,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.items.ui.text.ComposesText18
 import com.items.ui.text.ComposesText20
 import com.pokemon.ui.pokeapipokedex.R
